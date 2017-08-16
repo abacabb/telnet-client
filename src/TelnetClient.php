@@ -219,6 +219,9 @@ class TelnetClient implements TelnetClientInterface
      */
     protected function getResponse($prompt = null, $lineEnding = null)
     {
+        $prompt = (isset($prompt) ? $prompt : $this->prompt);
+        $lineEnding = (isset($lineEnding) ? $lineEnding : $this->lineEnding);
+        
         $isError = false;
         $buffer = '';
         do {
@@ -240,8 +243,6 @@ class TelnetClient implements TelnetClientInterface
             $buffer .= $character;
 
             // check for prompt
-            $prompt !== null ? $prompt : $this->prompt;
-            $lineEnding !== null ? $lineEnding : $this->lineEnding;
             if ($this->promptMatcher->isMatch($prompt, $buffer, $lineEnding)) {
                 break;
             }
