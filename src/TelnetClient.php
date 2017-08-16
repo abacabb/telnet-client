@@ -187,13 +187,12 @@ class TelnetClient implements TelnetClientInterface
     }
     
     /**
-     * @param string $prompt
      * @param string $lineEnding
      *
      * @return \Graze\TelnetClient\TelnetResponseInterface
      */
-    public function read($prompt = null, $lineEnding = null) {
-        return $this->getResponse($prompt, $lineEnding);
+    public function read($lineEnding = null) {
+        return $this->getResponse(null, $lineEnding);
     }
 
     /**
