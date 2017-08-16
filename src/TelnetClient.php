@@ -240,7 +240,9 @@ class TelnetClient implements TelnetClientInterface
             $buffer .= $character;
 
             // check for prompt
-            if ($this->promptMatcher->isMatch($prompt ?: $this->prompt, $buffer, $lineEnding ?: $this->lineEnding)) {
+            $prompt !== null ? $promt : $this->prompt;
+            $lineEnding !== null ? $lineEnding : $this->lineEnding;
+            if ($this->promptMatcher->isMatch($prompt, $buffer, $lineEnding)) {
                 break;
             }
 
