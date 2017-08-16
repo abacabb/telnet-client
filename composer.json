@@ -1,5 +1,5 @@
 {
-    "name": "graze/telnet-client",
+    "name": "abacabb/telnet-client",
     "description": "Telnet client written in PHP",
     "keywords": [
         "graze",
@@ -8,7 +8,7 @@
         "client",
         "php"
     ],
-    "homepage": "https://github.com/graze/telnet-client",
+    "homepage": "https://github.com/abacabb/telnet-client",
     "license": "MIT",
     "authors": [
         {
