@@ -41,19 +41,15 @@ class PromptMatcher
         }
 
         $matches = [];
-        $callback = function ($matchesCallback) use (&$matches) {
-            $matches = $matchesCallback;
-            // replace matches with an empty string (remove prompt from $subject)
-            return '';
-        };
         $pattern = sprintf('/%s%s$/', $prompt, $lineEnding);
 
-        $responseText = preg_replace_callback($pattern, $callback, $subject);
+        preg_match($pattern, $subject, $matches);
 
         if (empty($matches)) {
             return false;
         }
 
+        $responseText = $subject;
         // trim line endings
         $trimmable = [&$matches, &$responseText];
         array_walk_recursive($trimmable, function (&$trimee) use ($lineEnding) {
