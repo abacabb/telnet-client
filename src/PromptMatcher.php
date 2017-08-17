@@ -33,7 +33,7 @@ class PromptMatcher
      *
      * @return bool
      */
-    public function isMatch($prompt, $subject, $lineEnding)
+    public function isMatch($prompt, $subject, $lineEnding, $pattern = '%s%s$')
     {
         // cheap line ending check before expensive regex
         if (substr($subject, -1 * strlen($lineEnding)) != $lineEnding) {
@@ -41,7 +41,8 @@ class PromptMatcher
         }
 
         $matches = [];
-        $pattern = sprintf('/%s%s$/', $prompt, $lineEnding);
+        $pattern = '/' . $pattern . '/';
+        $pattern = sprintf($pattern, $prompt, $lineEnding);
 
         preg_match($pattern, $subject, $matches);
 
