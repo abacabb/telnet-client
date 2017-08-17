@@ -248,7 +248,7 @@ class TelnetClient implements TelnetClientInterface
             }
 
             // check for error prompt
-            if ($this->promptMatcher->isMatch($this->promptError, $buffer, $this->lineEnding)) {
+            if ($this->promptMatcher->isMatch($this->promptError, $buffer, '', '%s%s')) {
                 $isError = true;
                 break;
             }
